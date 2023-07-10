@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component, createRef } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor() {
+    super();
+    this.inputRef = createRef();
+  }
+  componentDidMount() {
+    console.warn(this.inputRef.current.value = '1000');
+  }
+  getVal(){
+  console.warn(this.inputRef.current.value)
+  this.inputRef.current.style.color ="red";
+  this.inputRef.current.style.backgroundColor ="black";
+
+  }
+  render() {
+    return (
+      <div className='App'>
+        <h1>Ref in React</h1>
+        <input type='text' ref={this.inputRef} />
+        <button onClick={()=>this.getVal()}>Cheak Ref</button>
+      </div>
+    );
+  }
 }
-
-export default App;
