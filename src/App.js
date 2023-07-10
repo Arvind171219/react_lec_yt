@@ -1,17 +1,13 @@
-import React,{useRef} from 'react'
-import User from './User'
+import React,{useState} from 'react'
 
 export default function App() {
-  let inputRef = useRef(null)
-  function updateInput(){
-    inputRef.current.value = "1000";
-    inputRef.current.style.color = "red"
-  }
+  let [val,setVal] = useState("")
+  let [item,setItem] = useState("")
   return (
     <div className='App'>
-      <h1>forwardRef in React</h1>
-      <User ref ={inputRef}/>
-      <button onClick={updateInput}>Update InputBox</button>
+      <h1>Controlled Components</h1>
+      <input type="text" value={val} onChange={(e)=>setVal(e.target.value)} />
+      <input type="text" value={item} onChange={(e)=>setItem(e.target.value)} />
     </div>
   )
 }
